@@ -30,7 +30,12 @@ public class UploadConfig {
     }
 
     private void init(){
-        boolean win = System.getProperty("os.name").contains("Win");
+        String system = System.getProperty("os.name");
+        System.out.println("加载系统:"+system);
+        boolean win=false;
+        if(system!=null&&system.contains("Win")){
+            win=true;
+        }
         File dir = new File(win?UploadConfig.windPath :UploadConfig.linuxPath);
         System.out.println("执行初始化");
         if (!dir.exists()) {// 判断目录是否存在
