@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.attackme</groupId>
-    <artifactId>my-uploader</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>uploader</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>my-uploader</name>
+    <name>uploader</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>

@@ -3,7 +3,7 @@ REGISTRY_HOST=registry.cn-shanghai.aliyuncs.com
 #命名空间
 REGISTRY_NAMESPACE=unistrong
 #镜像名称
-SERVICE_NAME=upload
+SERVICE_NAME=uploader
 #端口
 DEV_PORT=-p 8085:8085
 TEST_PORT=-p 8086:8086

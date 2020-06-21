@@ -23,7 +23,6 @@ public class UploadConfig {
     @Value("${upload.linuxPath}")
     public void setLinuxPath(String path) {
         UploadConfig.linuxPath=path;
-        this.init();
     }
 
     public static void main(String[] args) {
