@@ -45,14 +45,11 @@ public class FileService {
      * @param file
      * @throws IOException
      */
-    public void uploadWithBlock(String name,
-                                String md5,
-                                Long size,
-                                Integer chunks,
-                                Integer chunk,
-                                MultipartFile file) throws IOException {
+    public void uploadWithBlock(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
+        //获取文件名
         String fileName = getFileName(md5, chunks);
-        FileUtils.writeWithBlok(UploadConfig.path + fileName, size, file.getInputStream(), file.getSize(), chunks, chunk);
+        String type=name.substring(name.lastIndexOf("."));
+        FileUtils.writeWithBlok(UploadConfig.path + fileName+type, size, file.getInputStream(), file.getSize(), chunks, chunk);
         addChunk(md5,chunk);
         if (isUploaded(md5)) {
             removeKey(md5);
