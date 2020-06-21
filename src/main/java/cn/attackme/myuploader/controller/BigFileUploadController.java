@@ -1,6 +1,7 @@
 package cn.attackme.myuploader.controller;
 
 import cn.attackme.myuploader.service.FileService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,18 +17,15 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/BigFile")
 @CrossOrigin
+@Slf4j
 public class BigFileUploadController {
     @Autowired
     private FileService fileService;
 
     @PostMapping("/")
-    public void upload(String name,
-                       String md5,
-                       Long size,
-                       Integer chunks,
-                       Integer chunk,
-                       MultipartFile file) throws IOException {
+    public void upload(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
         if (chunks != null && chunks != 0) {
+            log.info("chunks###################name：{} ---md5：{}----size：{}---chunks：{}----chunk：{}----",name,md5,size,chunks,chunk);
             fileService.uploadWithBlock(name, md5,size,chunks,chunk,file);
         } else {
             fileService.upload(name, md5,file);
