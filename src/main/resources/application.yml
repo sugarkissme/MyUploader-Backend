@@ -14,6 +14,6 @@ mybatis:
   type-aliases-package: cn.attackme.myuploader.model
 upload:
   windPath: E:\upload\
-  linuxPath: /usr/upload/files/
+  linuxPath: /data/fota/files/
 server:
   port: 8085

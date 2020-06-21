@@ -17,7 +17,7 @@ build_dev:
 	docker build -t $(SERVICE_NAME):dev .
 
 run_dev:
-	docker run --name $(SERVICE_NAME)-dev -d -it $(DEV_PORT) -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-dev:/app/logs -v /usr/upload/files:/usr/upload/files -e SPRING_PROFILES_ACTIVE=dev $(SERVICE_NAME):dev
+	docker run --name $(SERVICE_NAME)-dev -d -it $(DEV_PORT) -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-dev:/app/logs -v /data/fota/files:/data/fota/files -e SPRING_PROFILES_ACTIVE=dev $(SERVICE_NAME):dev
 	docker logs -f $(SERVICE_NAME)-dev
 
 build_run_dev:
