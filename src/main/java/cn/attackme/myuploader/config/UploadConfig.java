@@ -21,8 +21,8 @@ public class UploadConfig {
     }
 
     @Value("${upload.linuxPath}")
-    public void setLinuxPath(String path) {
-        UploadConfig.linuxPath=path;
+    public void setLinuxPath(String linuxPath) {
+        UploadConfig.linuxPath=linuxPath;
     }
 
     public static void main(String[] args) {
@@ -31,11 +31,11 @@ public class UploadConfig {
 
     private void init(){
         String system = System.getProperty("os.name");
-        System.out.println("加载系统:"+system);
         boolean win=false;
         if(system!=null&&system.contains("Win")){
             win=true;
         }
+        System.out.println("加载系统:"+system+"---win:"+UploadConfig.windPath+"---linux:"+UploadConfig.linuxPath);
         File dir = new File(win?UploadConfig.windPath :UploadConfig.linuxPath);
         System.out.println("执行初始化");
         if (!dir.exists()) {// 判断目录是否存在
