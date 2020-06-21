@@ -17,12 +17,13 @@ public class UploadConfig {
     @Value("${upload.windPath}")
     public void setPath(String path) {
         UploadConfig.windPath = path;
-        this.init();
+
     }
 
     @Value("${upload.linuxPath}")
     public void setLinuxPath(String linuxPath) {
         UploadConfig.linuxPath=linuxPath;
+        this.init();
     }
 
     public static void main(String[] args) {
