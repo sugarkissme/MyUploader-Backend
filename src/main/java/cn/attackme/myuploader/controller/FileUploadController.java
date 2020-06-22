@@ -1,5 +1,6 @@
 package cn.attackme.myuploader.controller;
 
+import cn.attackme.myuploader.common.ResponseVO;
 import cn.attackme.myuploader.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,9 +22,8 @@ public class FileUploadController {
     private FileService fileService;
 
     @PostMapping("/")
-    public void upload(String name,
-                       String md5,
-                       MultipartFile file) throws IOException {
-        fileService.upload(name, md5,file);
+    public ResponseVO<String> upload(String name, String md5, MultipartFile file) throws IOException {
+       String url= fileService.upload(name, md5,file);
+        return ResponseVO.success(url);
     }
 }

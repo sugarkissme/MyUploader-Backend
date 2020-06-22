@@ -28,12 +28,14 @@ public class FileService {
      * @param md5
      * @param file
      */
-    public void upload(String name,
+    public String upload(String name,
                        String md5,
                        MultipartFile file) throws IOException {
         String path = UploadConfig.path + generateFileName();
+        String url = UploadConfig.url + generateFileName();
         FileUtils.write(path, file.getInputStream());
-        fileDao.save(new File(name, md5, path, new Date()));
+        fileDao.save(new File(name, md5, path, new Date(),url));
+        return url;
     }
 
     /**
@@ -45,16 +47,18 @@ public class FileService {
      * @param file
      * @throws IOException
      */
-    public void uploadWithBlock(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
+    public String uploadWithBlock(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
         //获取文件名
         String fileName = getFileName(md5, chunks);
         String type=name.substring(name.lastIndexOf("."));
-        FileUtils.writeWithBlok(UploadConfig.path + fileName+type, size, file.getInputStream(), file.getSize(), chunks, chunk);
+        FileUtils.writeWithBlok(UploadConfig.path + fileName + type, size, file.getInputStream(), file.getSize(), chunks, chunk);
         addChunk(md5,chunk);
         if (isUploaded(md5)) {
             removeKey(md5);
-            fileDao.save(new File(name, md5,UploadConfig.path + fileName, new Date()));
+            fileDao.save(new File(name, md5,UploadConfig.path + fileName + type, new Date(),UploadConfig.url+fileName+type));
+            return UploadConfig.url+fileName+type;
         }
+        return UploadConfig.url+fileName+type;
     }
 
     /**

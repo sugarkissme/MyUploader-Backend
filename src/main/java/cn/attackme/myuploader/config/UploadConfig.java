@@ -11,12 +11,18 @@ public class UploadConfig {
     public static String path;
     public static String linuxPath;
     public static String windPath;
+    public static String url;
 
 
 
     @Value("${upload.windPath}")
     public void setPath(String path) {
         UploadConfig.windPath = path;
+
+    }
+    @Value("${upload.url}")
+    public void setUrl(String url) {
+        UploadConfig.url = url;
 
     }
 

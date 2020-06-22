@@ -15,5 +15,7 @@ mybatis:
 upload:
   windPath: E:\upload\
   linuxPath: /data/fota/files/
+  url: http://192.168.108.87/fota/files/
+  #url: http://helloki.top/fota/files/
 server:
   port: 8085

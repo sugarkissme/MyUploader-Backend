@@ -1,5 +1,6 @@
 package cn.attackme.myuploader.controller;
 
+import cn.attackme.myuploader.common.ResponseVO;
 import cn.attackme.myuploader.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,14 @@ public class BigFileUploadController {
     private FileService fileService;
 
     @PostMapping("/")
-    public void upload(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
+    public ResponseVO<String> upload(String name, String md5, Long size, Integer chunks, Integer chunk, MultipartFile file) throws IOException {
+        String url;
         if (chunks != null && chunks != 0) {
-            log.info("chunks###################name：{} ---md5：{}----size：{}---chunks：{}----chunk：{}----",name,md5,size,chunks,chunk);
-            fileService.uploadWithBlock(name, md5,size,chunks,chunk,file);
+            log.debug("chunks###################name：{} ---md5：{}----size：{}---chunks：{}----chunk：{}----",name,md5,size,chunks,chunk);
+             url=fileService.uploadWithBlock(name, md5,size,chunks,chunk,file);
         } else {
-            fileService.upload(name, md5,file);
+            url=fileService.upload(name, md5,file);
         }
+        return ResponseVO.success(url);
     }
 }
