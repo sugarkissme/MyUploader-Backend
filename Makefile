@@ -17,7 +17,7 @@ build_dev:
 	docker build -t $(SERVICE_NAME):dev .
 
 run_dev:
-	docker run --name $(SERVICE_NAME)-dev -d -it $(DEV_PORT) -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-dev:/app/logs -v /data/fota/files:/data/fota/files -e SPRING_PROFILES_ACTIVE=dev $(SERVICE_NAME):dev
+	docker run --name $(SERVICE_NAME)-dev -d -it $(DEV_PORT) --restart=always -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-dev:/app/logs -v /data/fota/files:/data/fota/files -e SPRING_PROFILES_ACTIVE=dev $(SERVICE_NAME):dev
 	docker logs -f $(SERVICE_NAME)-dev
 
 build_run_dev:
@@ -34,7 +34,7 @@ build_test:
 	docker build -t $(SERVICE_NAME):test .
 
 run_test:
-	docker run --name $(SERVICE_NAME)-test -d $(TEST_PORT) -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-test:/app/logs -e SPRING_PROFILES_ACTIVE=test $(SERVICE_NAME):test
+	docker run --name $(SERVICE_NAME)-test -d $(TEST_PORT) --restart=always -v /etc/hosts:/etc/hosts -v /data/logs/unistrong/$(SERVICE_NAME)-test:/app/logs -e SPRING_PROFILES_ACTIVE=test $(SERVICE_NAME):test
 	docker logs -f $(SERVICE_NAME)-test
 
 build_run_test:
