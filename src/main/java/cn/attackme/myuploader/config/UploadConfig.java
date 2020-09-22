@@ -44,7 +44,7 @@ public class UploadConfig {
         }
         System.out.println("加载系统:"+system+"---win:"+UploadConfig.windPath+"---linux:"+UploadConfig.linuxPath);
         File dir = new File(win?UploadConfig.windPath :UploadConfig.linuxPath);
-        System.out.println("执行初始化");
+        System.out.println("执行初始化:"+dir.exists());
         if (!dir.exists()) {// 判断目录是否存在
             dir.mkdir();
         }
