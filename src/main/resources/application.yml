@@ -33,4 +33,4 @@ spring:
 upload:
   windPath: E:\upload\
   linuxPath: /data/fota/files/
-  url: http://192.168.12.61/fota/files/
+  url: http://192.168.12.61:8088/fota/files/

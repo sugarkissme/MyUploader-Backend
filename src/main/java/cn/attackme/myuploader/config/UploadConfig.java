@@ -46,7 +46,9 @@ public class UploadConfig {
         File dir = new File(win?UploadConfig.windPath :UploadConfig.linuxPath);
         System.out.println("执行初始化:"+dir.exists());
         if (!dir.exists()) {// 判断目录是否存在
-            dir.mkdir();
+            boolean mkdir = dir.mkdir();
+            System.out.println("创建目录执行结果："+mkdir+" 路径"+UploadConfig.linuxPath);
+
         }
         UploadConfig.path=win?UploadConfig.windPath :UploadConfig.linuxPath;
 
