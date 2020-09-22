@@ -27,17 +27,6 @@ server:
 spring:
   profiles: test
   datasource:
-    url: jdbc:mysql://192.168.108.87:3306/test_unistrong_dev?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
-upload:
-  windPath: E:\upload\
-  linuxPath: /data/fota/files/
-  url: http://192.168.12.61/fota/files/
----
-spring:
-  profiles: prod
-  datasource:
     url: jdbc:mysql://192.168.12.61:3306/unistrong_fota?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
