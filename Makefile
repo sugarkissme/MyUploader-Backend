@@ -1,10 +1,11 @@
 #镜像库名称
-REGISTRY_HOST=registry.cn-shanghai.aliyuncs.com
+REGISTRY_HOST=192.168.12.61:5000
 #命名空间
 REGISTRY_NAMESPACE=unistrong
 #镜像名称
 SERVICE_NAME=uploader
 #端口
+PORT=-p 8085:8085
 DEV_PORT=-p 8085:8085
 TEST_PORT=-p 8086:8086
 
