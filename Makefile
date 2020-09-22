@@ -7,7 +7,7 @@ SERVICE_NAME=uploader
 #端口
 PORT=-p 8085:8085
 DEV_PORT=-p 8085:8085
-TEST_PORT=-p 8086:8086
+TEST_PORT=-p 8085:8085
 
 ##DEV
 build_dev:
