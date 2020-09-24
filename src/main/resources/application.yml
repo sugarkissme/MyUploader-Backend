@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://47.101.157.241:3306/test_unistrong_dev?useUnicode=true&characterEncoding=utf-8&serverTimeZone=UTC&useSSL=false
+    url: jdbc:mysql://192.168.12.61:3306/unistrong_fota?useUnicode=true&characterEncoding=utf-8&serverTimeZone=UTC&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
   servlet:
     multipart:
@@ -17,7 +17,7 @@ mybatis:
 upload:
   windPath: E:\upload\
   linuxPath: /data/fota/files/
-  url: http://192.168.12.61:8088/fota/files/
+  url: http://fota.unistrong.com/fota/files/
   #url: http://helloki.top/fota/files/
 server:
   port: 8085
@@ -33,4 +33,4 @@ spring:
 upload:
   windPath: E:\upload\
   linuxPath: /data/fota/files/
-  url: http://192.168.12.61:8088/fota/files/
+  url: http://fota.unistrong.com/fota/files/
